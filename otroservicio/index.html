@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Otro servicio</title>
+    <script type="text/javascript">
+    var i=0;
+      function nuevo() {
+        if (i>4) {
+          return false;
+        }else if (i==4) {
+          i++;
+          var nuevo= document.createElement("p");
+          var contenedor= document.getElementById('formulario');
+          var seleccionado= document.getElementById('enviar');
+          contenedor.insertBefore(nuevo, seleccionado);
+          nuevo.innerHTML="<label><i class='fa fa-qestion-circle'></i>Otro turno</label><input class='threeinputs' type='time' name='f"+i+"'/><input class='threeinputs2' type='time' name='i"+i+"'/><input class='threeinputs1' type='number' onclick='suma();' onkeypress='suma();' value='0' min='0' name='o"+i+"'/>";
+          var borrar= document.getElementById('nuevoServicio');
+          borrar.parentNode.removeChild(borrar);
+        }else {
+          i++;
+          var nuevo= document.createElement("p");
+          var contenedor= document.getElementById('formulario');
+          var seleccionado= document.getElementById('enviar');
+          contenedor.insertBefore(nuevo, seleccionado);
+          nuevo.innerHTML="<label><i class='fa fa-qestion-circle'></i>Otro turno</label><input class='threeinputs' type='time' name='f"+i+"'/><input class='threeinputs2' type='time' name='i"+i+"'/><input class='threeinputs1' type='number' min='0'  onclick='suma();' onkeypress='suma();' value='0' name='o"+i+"' id='in"+i+"'/>";
+        }
+      }
+
+      function suma() {
+        var suma;
+        var contenido1 = parseInt(document.getElementById('primer').value);
+        var contenido2= parseInt(document.getElementById('segon').value);
+        var contenido3= parseInt(document.getElementById('tercer').value);
+        if (document.getElementById('in1')) {
+          var contenido4=parseInt(document.getElementById('in1').value);
+        }else {
+          var contenido4=0;
+        }
+        if (document.getElementById('in2')) {
+          var contenido5=parseInt(document.getElementById('in2').value);
+        }else {
+          var contenido5=0;
+        }
+        if (document.getElementById('in3')) {
+          var contenido6= parseInt(document.getElementById('in3').value);
+        }else {
+          var contenido6=0;
+        }
+        if (document.getElementById('in4')) {
+          var contenido7= parseInt(document.getElementById('in4').value);
+        }else {
+          var contenido7=0;
+        }
+        if (document.getElementById('in5')) {
+          var contenido8= parseInt(document.getElementById('in5').value);
+        }else {
+          var contenido8=0;
+        }
+        suma = contenido1 + contenido2 + contenido3 + contenido4 + contenido5 + contenido6 + contenido7 + contenido8;
+        document.getElementById('total').value= suma;
+    }
+    </script>
+  </head>
+  <body>
+    <form class="" action="index.html" method="post" id="formulario">
+      <p><label><i class="fa fa-question-circle"></i>Total </label><input class="threeinputs" type="number" name="f5" id="total" disabled/></p>
+      <input type="number" value="0" id="primer" onclick="suma();" onkeypress="suma();">
+      <input type="number" value="0" id="segon" onclick="suma();" onkeypress="suma();">
+      <input type="number" value="0" id="tercer" onclick="suma();" onkeypress="suma();">
+      <button type="button" name="button" id="nuevoServicio" onclick="nuevo();">Añadir nuevo horario</button>
+      <input type="submit" name="" value="Enviar" id="enviar">
+    </form>
+  </body>
+</html>
